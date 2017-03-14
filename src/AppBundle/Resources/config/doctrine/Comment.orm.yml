@@ -1,0 +1,28 @@
+AppBundle\Entity\Comment:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\CommentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        content:
+            type: text
+            nullable: true
+        photo:
+            type: string
+            length: 255
+            nullable: true
+        video:
+            type: string
+            length: 255
+            nullable: true
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }
+    manyToOne:
+        message:
+            targetEntity: AppBundle\Entity\Message

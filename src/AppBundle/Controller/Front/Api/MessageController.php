@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller\Front\Api;
 
+use AppBundle\Entity\Comment;
+use AppBundle\Entity\Message;
 use FOS\RestBundle\Controller\FOSRestController;
 
 /**

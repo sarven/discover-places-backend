@@ -1,0 +1,36 @@
+AppBundle\Entity\Message:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\MessageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        content:
+            type: text
+            nullable: true
+        photo:
+            type: string
+            length: 255
+            nullable: true
+        video:
+            type: string
+            length: 255
+            nullable: true
+        latitude:
+            type: float
+        longitude:
+            type: float
+        scope:
+            type: integer
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }
+    oneToMany:
+        comments:
+            targetEntity: AppBundle\Entity\Comment
+            mappedBy: message
+            cascade: ["persist"]
