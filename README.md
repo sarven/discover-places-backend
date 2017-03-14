@@ -1,4 +1,7 @@
-app
+DiscoverPlaces
 ===
 
-A Symfony project created on March 8, 2017, 9:48 pm.
+Application allowing add something like easter eggs in various places.
+
+Project for Get Noticed Competition
+
