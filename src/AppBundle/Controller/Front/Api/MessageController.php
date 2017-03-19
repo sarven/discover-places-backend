@@ -15,7 +15,7 @@ class MessageController extends FOSRestController
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getAction()
+    public function getMessagesAction()
     {
         $view = $this->view('test', 200);
 

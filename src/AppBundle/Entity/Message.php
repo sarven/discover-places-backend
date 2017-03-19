@@ -9,6 +9,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Message
 {
     /**
+     * Available scopes in kilometers
+     */
+    const AVAILABLE_SCOPES = [1, 2, 5];
+
+    /**
      * @var int
      */
     private $id;
