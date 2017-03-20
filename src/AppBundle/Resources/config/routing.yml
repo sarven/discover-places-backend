@@ -1,5 +1,12 @@
 #Front
 front.api.message.list:
     path: /front/api/message/list
+    methods: [GET]
     defaults:
         _controller: AppBundle:Front/Api/Message:getMessages
+
+front.api.message.create:
+    path: /front/api/message
+    methods: [POST]
+    defaults:
+        _controller: AppBundle:Front/Api/Message:createMessage

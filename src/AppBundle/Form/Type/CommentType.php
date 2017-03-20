@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\FormType;
+namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Image;
 
 /**
@@ -33,7 +34,21 @@ class CommentType extends AbstractType
                 ]
             ])
             ->add('video', FileType::class, [
-                'required' => false // TODO: Video constraint
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'video/mp4',
+                            'video/x-flv',
+                            'application/x-mpegURL',
+                            'video/MP2T',
+                            'video/3gpp',
+                            'video/quicktime',
+                            'video/x-msvideo',
+                            'video/x-ms-wmv'
+                        ]
+                    ])
+                ]
             ])
         ;
     }
@@ -44,7 +59,8 @@ class CommentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Comment::class
+            'data_class' => Comment::class,
+            'csrf_protection' => false
         ]);
     }
 }

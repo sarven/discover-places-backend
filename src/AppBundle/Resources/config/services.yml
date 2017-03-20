@@ -1,0 +1,3 @@
+services:
+    utils.form_error_parser:
+        class: AppBundle\Utils\FormErrorParser

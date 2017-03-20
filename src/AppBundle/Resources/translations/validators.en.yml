@@ -1,0 +1,8 @@
+latitude:
+    min_message: Minimum latitude is {{ limit }}.
+    max_message: Maximum latitude is {{ limit }}.
+longitude:
+    min_message: Minimum longitude is {{ limit }}.
+    max_message: Maximum longitude is {{ limit }}.
+scope:
+    invalid: Scope is invalid.
