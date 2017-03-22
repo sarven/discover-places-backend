@@ -17,3 +17,14 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    locale: en
+    message_uploads_dir: '%kernel.root_dir%/../web/uploads/message'
+    comment_uploads_dir: '%kernel.root_dir%/../web/uploads/comment'
+
+    # Test database
+    test_database_host: 127.0.0.1
+    test_database_port: ~
+    test_database_name: symfony
+    test_database_user: root
+    test_database_password: ~
