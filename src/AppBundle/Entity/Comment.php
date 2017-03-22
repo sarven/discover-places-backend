@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 /**
  * Comment
  */
-class Comment
+class Comment implements ResourceInterface
 {
     /**
      * @var int

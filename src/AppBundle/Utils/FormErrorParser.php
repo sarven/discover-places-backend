@@ -18,7 +18,7 @@ class FormErrorParser
     {
         $errorMessages = [];
 
-        foreach($form->getErrors(true) as $error) {
+        foreach ($form->getErrors(true) as $error) {
             $errorMessages[] = $error->getMessage();
         }
 

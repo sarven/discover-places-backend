@@ -5,10 +5,26 @@ namespace AppBundle\Upload;
 use AppBundle\Entity\ResourceInterface;
 
 /**
- * Class CommentFileUploader
+ * Class VideoUploader
  * @package AppBundle\Upload
  */
-class CommentFileUploader extends AbstractFileUploader
+class VideoUploader extends AbstractFileUploader
 {
-    const DIR_PARAM = 'message_uploads_dir';
+    /**
+     * @param ResourceInterface $resource
+     * @return ResourceInterface
+     */
+    protected function getFile(ResourceInterface $resource)
+    {
+        return $resource->getVideo();
+    }
+
+    /**
+     * @param ResourceInterface $resource
+     * @param string $fileName
+     */
+    protected function setFileName(ResourceInterface $resource, string $fileName)
+    {
+        $resource->setVideo($fileName);
+    }
 }

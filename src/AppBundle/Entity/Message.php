@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Message
  */
-class Message
+class Message implements ResourceInterface
 {
     /**
      * Available scopes in kilometers
@@ -264,7 +264,7 @@ class Message
      */
     public function addComment(Comment $comment)
     {
-        if(!$this->comments->contains($comment)) {
+        if (!$this->comments->contains($comment)) {
             $this->comments->add($comment);
         }
 
@@ -280,7 +280,7 @@ class Message
      */
     public function removeComment(Comment $comment)
     {
-        if($this->comments->contains($comment)) {
+        if ($this->comments->contains($comment)) {
             $this->removeComment($comment);
         }
 

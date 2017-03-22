@@ -33,8 +33,14 @@ class MessageController extends FOSRestController
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('photo.uploader')->upload($message, $this->getParameter('message_uploads_dir'));
+            $this->get('video.uploader')->upload($message, $this->getParameter('message_uploads_dir'));
 
+            $this->get('resource.manager')->save($message);
+
+            $view = $this->view($message, 201);
+            return $this->handleView($view);
         }
 
         $errors = $this->get('utils.form_error_parser')->getErrors($form);

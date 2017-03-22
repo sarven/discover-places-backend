@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Range;
 
 /**
@@ -61,7 +62,8 @@ class MessageType extends AbstractType
                         'minMessage' => 'latitude.min_message',
                         'max' => 90,
                         'maxMessage' => 'latitude.max_message'
-                    ])
+                    ]),
+                    new NotBlank()
                 ]
             ])
             ->add('longitude', NumberType::class, [
@@ -72,7 +74,8 @@ class MessageType extends AbstractType
                         'minMessage' => 'longitude.min_message',
                         'max' => 180,
                         'maxMessage' => 'longitude.max_message'
-                    ])
+                    ]),
+                    new NotBlank()
                 ]
             ])
             ->add('scope', ChoiceType::class, [

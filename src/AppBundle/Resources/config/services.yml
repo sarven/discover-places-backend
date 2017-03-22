@@ -1,3 +1,15 @@
 services:
     utils.form_error_parser:
         class: AppBundle\Utils\FormErrorParser
+    resource.manager:
+        class: AppBundle\Manager\ResourceManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+    photo.uploader:
+        class: AppBundle\Upload\PhotoUploader
+        arguments:
+            - '@service_container'
+    video.uploader:
+        class: AppBundle\Upload\VideoUploader
+        arguments:
+            - '@service_container'
