@@ -6,6 +6,7 @@ use AppBundle\Entity\Message;
 use AppBundle\Form\Type\MessageType;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class MessageController
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class MessageController extends FOSRestController
 {
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function getMessagesAction()
     {
@@ -24,7 +25,7 @@ class MessageController extends FOSRestController
 
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function createMessageAction(Request $request)
     {
@@ -39,7 +40,7 @@ class MessageController extends FOSRestController
 
             $this->get('resource.manager')->save($message);
 
-            $view = $this->view($message, 201);
+            $view = $this->view(null, 201);
             return $this->handleView($view);
         }
 

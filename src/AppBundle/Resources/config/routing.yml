@@ -10,3 +10,9 @@ front.api.message.create:
     methods: [POST]
     defaults:
         _controller: AppBundle:Front/Api/Message:createMessage
+
+front.api.comment.create:
+    path: /front/api/message/{message_id}/comment
+    methods: [POST]
+    defaults:
+        _controller: AppBundle:Front/Api/Comment:createComment

@@ -33,4 +33,4 @@ AppBundle\Entity\Message:
         comments:
             targetEntity: AppBundle\Entity\Comment
             mappedBy: message
-            cascade: ["persist"]
+            cascade: ["persist", "remove"]
