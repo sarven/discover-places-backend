@@ -15,11 +15,16 @@ use Symfony\Component\HttpFoundation\Response;
 class MessageController extends FOSRestController
 {
     /**
+     * @param float $lat
+     * @param float $long
      * @return Response
      */
-    public function getMessagesAction()
+    public function getMessagesAction(float $lat, float $long)
     {
-        $view = $this->view('test', 200);
+        $messageRepository = $this->getDoctrine()->getRepository('AppBundle:Message');
+        $messages = $messageRepository->findByCoordinates($lat, $long);
+
+        $view = $this->view($messages, 200);
         return $this->handleView($view);
     }
 

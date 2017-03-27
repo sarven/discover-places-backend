@@ -39,9 +39,7 @@ abstract class AbstractFileUploader implements FileUploaderInterface
     }
 
     /**
-     * @param ResourceInterface $resource
-     * @param string $uploadDir
-     * @return bool
+     * @inheritdoc
      */
     public function upload(ResourceInterface $resource, string $uploadDir)
     {

@@ -1,6 +1,6 @@
 #Front
 front.api.message.list:
-    path: /front/api/message/list
+    path: /front/api/message/list/{lat}/{long}
     methods: [GET]
     defaults:
         _controller: AppBundle:Front/Api/Message:getMessages

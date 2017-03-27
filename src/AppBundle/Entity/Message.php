@@ -1,7 +1,9 @@
 <?php
 
 namespace AppBundle\Entity;
+
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Message
@@ -15,46 +17,64 @@ class Message implements ResourceInterface
 
     /**
      * @var int
+     *
+     * @Groups({"api"})
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @Groups({"api"})
      */
     private $content;
 
     /**
      * @var string
+     *
+     * @Groups({"api"})
      */
     private $photo;
 
     /**
      * @var string
+     *
+     * @Groups({"api"})
      */
     private $video;
 
     /**
      * @var float
+     *
+     * @Groups({"api"})
      */
     private $latitude;
 
     /**
      * @var float
+     *
+     * @Groups({"api"})
      */
     private $longitude;
 
     /**
      * @var int
+     *
+     * @Groups({"api"})
      */
     private $scope;
 
     /**
      * @var \DateTime
+     *
+     * @Groups({"api"})
      */
     private $date;
 
     /**
      * @var Comment[]
+     *
+     * @Groups({"api"})
      */
     private $comments;
 

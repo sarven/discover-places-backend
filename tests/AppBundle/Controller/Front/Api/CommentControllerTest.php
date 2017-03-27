@@ -35,8 +35,6 @@ class CommentControllerTest extends WebTestCase
         ]
         );
 
-        var_dump($client->getResponse()->getContent());
-
         $this->assertEquals(201, $client->getResponse()->getStatusCode());
     }
 }

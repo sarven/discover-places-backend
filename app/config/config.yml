@@ -60,6 +60,12 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        dql:
+            numeric_functions:
+                acos: DoctrineExtensions\Query\Mysql\Acos
+                cos: DoctrineExtensions\Query\Mysql\Cos
+                sin: DoctrineExtensions\Query\Mysql\Sin
+                radians: DoctrineExtensions\Query\Mysql\Radians
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -80,3 +86,5 @@ fos_rest:
         enabled: true
         rules:
             - { path: '^/front/api', priorities: ['json'], prefer_extension: true }
+    serializer:
+        groups: ['api']

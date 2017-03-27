@@ -12,19 +12,49 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class LoadUserData implements FixtureInterface
 {
+    const DATA = [
+        [
+            'content' => 'test',
+            'lat' => 50,
+            'long' => 50,
+            'scope' => 1
+        ],
+        [
+            'content' => 'test2',
+            'lat' => 50.0444706,
+            'long' => 19.9573029,
+            'scope' => 10
+        ],
+        [
+            'content' => 'test2',
+            'lat' => 43.0444706,
+            'long' => 12.9573029,
+            'scope' => 10
+        ]
+    ];
+
     /**
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
-        $message = (new Message())
-            ->setContent('test')
-            ->setLatitude(50)
-            ->setLongitude(50)
-            ->setScope(1)
-        ;
-
-        $manager->persist($message);
+        foreach (self::DATA as $dataMessage) {
+            $manager->persist($this->createMessage($dataMessage));
+        }
         $manager->flush();
+    }
+
+    /**
+     * @param array $data
+     * @return Message
+     */
+    public function createMessage(array $data)
+    {
+        return (new Message())
+            ->setContent($data['content'])
+            ->setLatitude($data['lat'])
+            ->setLongitude($data['long'])
+            ->setScope($data['scope'])
+        ;
     }
 }

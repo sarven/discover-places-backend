@@ -14,7 +14,7 @@ interface FileUploaderInterface
     /**
      * @param ResourceInterface $resource
      * @param string $uploadDir
-     * @return mixed
+     * @return bool
      */
     public function upload(ResourceInterface $resource, string $uploadDir);
 }

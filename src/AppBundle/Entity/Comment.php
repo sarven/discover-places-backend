@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * Comment
  */
@@ -9,26 +11,36 @@ class Comment implements ResourceInterface
 {
     /**
      * @var int
+     *
+     * @Groups({"api"})
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @Groups({"api"})
      */
     private $content;
 
     /**
      * @var string
+     *
+     * @Groups({"api"})
      */
     private $photo;
 
     /**
      * @var string
+     *
+     * @Groups({"api"})
      */
     private $video;
 
     /**
      * @var \DateTime
+     *
+     * @Groups({"api"})
      */
     private $date;
 
