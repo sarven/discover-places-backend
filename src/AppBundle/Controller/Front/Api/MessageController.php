@@ -24,7 +24,10 @@ class MessageController extends FOSRestController
         $messageRepository = $this->getDoctrine()->getRepository('AppBundle:Message');
         $messages = $messageRepository->findByCoordinates($lat, $long);
 
-        $view = $this->view($messages, 200);
+        $view = $this->view([
+            'data' => $messages
+        ],
+        200);
         return $this->handleView($view);
     }
 

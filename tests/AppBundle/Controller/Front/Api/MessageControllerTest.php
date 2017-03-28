@@ -17,19 +17,19 @@ class MessageControllerTest extends WebTestCase
 
         $client->request('GET', '/front/api/message/list/50.0000002/50.0000002');
         $data = json_decode($client->getResponse()->getContent());
-        $this->assertGreaterThan(0, count($data));
+        $this->assertGreaterThan(0, count($data->data));
 
         $client->request('GET', '/front/api/message/list/50.0424706/19.9518421');
         $data = json_decode($client->getResponse()->getContent());
-        $this->assertEquals(1, count($data));
+        $this->assertEquals(1, count($data->data));
 
         $client->request('GET', '/front/api/message/list/43.0456978/13.056275');
         $data = json_decode($client->getResponse()->getContent());
-        $this->assertEquals(1, count($data));
+        $this->assertEquals(1, count($data->data));
 
         $client->request('GET', '/front/api/message/list/43.047051/13.0846577');
         $data = json_decode($client->getResponse()->getContent());
-        $this->assertEquals(0, count($data));
+        $this->assertEquals(0, count($data->data));
     }
 
     public function testCreateMessage()
