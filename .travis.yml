@@ -9,3 +9,10 @@ before_script:
     - php bin/console doctrine:database:create --env=test
     - php bin/console doctrine:schema:create --env=test
     - php bin/console doctrine:fixtures:load -n --env=test
+after_success:
+  - eval "$(ssh-agent -s)"
+  - echo "$DEPLOY_KEY" > deploy_key.pem
+  - chmod 600 deploy_key.pem
+  - ssh-add deploy_key.pem
+  - git remote add deploy $DEPLOY_REPO_URI
+  - git push deploy master
