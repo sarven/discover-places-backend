@@ -34,3 +34,4 @@ AppBundle\Entity\Message:
             targetEntity: AppBundle\Entity\Comment
             mappedBy: message
             cascade: ["persist", "remove"]
+            orderBy: { 'id': 'DESC' }

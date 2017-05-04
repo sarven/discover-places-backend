@@ -38,6 +38,7 @@ class MessageRepository extends EntityRepository
                 'long' => $long
             ])
             ->having('distance <= m.scope')
+            ->orderBy('m.id', 'DESC')
         ;
 
         return $qb->getQuery()->getResult();
