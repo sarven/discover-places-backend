@@ -1,4 +1,10 @@
 #Front
+front.api.message.coordinates.list:
+    path: /front/api/message/coordinates/list
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Front/Api/Message:getLatestMessagesCoordinates
+
 front.api.message.list:
     path: /front/api/message/list/{lat}/{long}
     methods: [GET]

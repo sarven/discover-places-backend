@@ -43,4 +43,13 @@ class MessageRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /**
+     * @param int $limit
+     * @return array
+     */
+    public function getLatestMessages(int $limit)
+    {
+        return $this->findBy([], ['id' => 'DESC'], $limit);
+    }
 }

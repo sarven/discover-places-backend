@@ -4,9 +4,11 @@ namespace AppBundle\Controller\Front\Api;
 
 use AppBundle\Entity\Message;
 use AppBundle\Form\Type\MessageType;
+use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use FOS\RestBundle\Controller\Annotations\View;
 
 /**
  * Class MessageController
@@ -54,6 +56,22 @@ class MessageController extends FOSRestController
 
         $errors = $this->get('utils.form_error_parser')->getErrors($form);
         $view = $this->view($errors, 400);
+        return $this->handleView($view);
+    }
+
+    /**
+     * @View(serializerGroups={"coordinates"})
+     *
+     * @return Response
+     */
+    public function getLatestMessagesCoordinatesAction()
+    {
+        $messageRepository = $this->getDoctrine()->getRepository('AppBundle:Message');
+        $messages = $messageRepository->getLatestMessages(1000);
+
+        $view = $this->view([
+            'data' => $messages
+        ], 200);
         return $this->handleView($view);
     }
 }

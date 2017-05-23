@@ -61,4 +61,12 @@ class MessageControllerTest extends WebTestCase
 
         $this->assertEquals(201, $client->getResponse()->getStatusCode());
     }
+    public function testGetLatestMessages()
+    {
+        $client = self::createClient();
+
+        $client->request('GET', '/front/api/message/coordinates/list');
+        $data = json_decode($client->getResponse()->getContent());
+        $this->assertGreaterThan(0, count($data->data));
+    }
 }

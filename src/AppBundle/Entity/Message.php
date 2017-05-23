@@ -46,14 +46,14 @@ class Message implements ResourceInterface
     /**
      * @var float
      *
-     * @Groups({"api"})
+     * @Groups({"api", "coordinates"})
      */
     private $latitude;
 
     /**
      * @var float
      *
-     * @Groups({"api"})
+     * @Groups({"api", "coordinates"})
      */
     private $longitude;
 
