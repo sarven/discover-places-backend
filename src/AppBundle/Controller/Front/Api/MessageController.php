@@ -60,8 +60,6 @@ class MessageController extends FOSRestController
     }
 
     /**
-     * @View(serializerGroups={"coordinates"})
-     *
      * @return Response
      */
     public function getLatestMessagesCoordinatesAction()
@@ -72,6 +70,7 @@ class MessageController extends FOSRestController
         $view = $this->view([
             'data' => $messages
         ], 200);
+        $view->setContext((new Context())->setGroups(['coordinates']));
         return $this->handleView($view);
     }
 }
