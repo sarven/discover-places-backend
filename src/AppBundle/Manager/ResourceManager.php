@@ -56,8 +56,25 @@ class ResourceManager implements ResourceManagerInterface
         return $resource;
     }
 
+    /**
+     * @param ResourceInterface $resource
+     * @param string $ip
+     * @return bool
+     */
     public function isPossibleToAdd(ResourceInterface $resource, string $ip)
     {
+        dump($this->em->createQueryBuilder()
+            ->select('COUNT(r)')
+            ->from(get_class($resource), 'r')
+            ->where('r.ip = :ip')
+            ->andWhere('timestampdiff(SECOND, r.date, :today) < :timeConstraint')
+            ->setParameters([
+                'ip' => $ip,
+                'today' => new \DateTime(),
+                'timeConstraint' => $this->timeConstraintInSec
+            ])
+            ->getQuery()
+            ->getSingleScalarResult() );
         return $this->em->createQueryBuilder()
             ->select('COUNT(r)')
             ->from(get_class($resource), 'r')
