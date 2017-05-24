@@ -36,7 +36,6 @@ class MessageControllerTest extends WebTestCase
     public function testCreateMessage()
     {
         $response = $this->createMessage();
-        dump($response);
         $this->assertEquals(201, $response->getStatusCode());
 
         $response = $this->createMessage();
