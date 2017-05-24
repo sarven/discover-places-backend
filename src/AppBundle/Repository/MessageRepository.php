@@ -2,7 +2,6 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Entity\Message;
 use Doctrine\ORM\EntityRepository;
 
 /**

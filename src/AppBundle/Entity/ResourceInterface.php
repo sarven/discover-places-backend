@@ -20,14 +20,35 @@ interface ResourceInterface
     public function setPhoto($photo);
 
     /**
-     * @return ResourceInterface
+     * @return string
      */
     public function getVideo();
 
     /**
      * @param $video
-     * @return string
+     * @return ResourceInterface
      */
     public function setVideo($video);
 
+    /**
+     * @return \DateTime
+     */
+    public function getDate();
+
+    /**
+     * @param \DateTime $date
+     * @return ResourceInterface
+     */
+    public function setDate(\DateTime $date);
+
+    /**
+     * @return string
+     */
+    public function getIp();
+
+    /**
+     * @param string $ip
+     * @return ResourceInterface
+     */
+    public function setIp(string $ip);
 }

@@ -25,18 +25,20 @@ class CommentController extends FOSRestController
      */
     public function createCommentAction(Request $request, Message $message)
     {
-        $comment = new Comment();
+        $resourceManager = $this->get('resource.manager');
+        $ip = $request->getClientIp();
+        $comment = (new Comment())->setIp($ip);
 
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $resourceManager->isPossibleToAdd($comment, $ip)) {
             $this->get('photo.uploader')->upload($comment, $this->getParameter('comment_uploads_dir'));
             $this->get('video.uploader')->upload($comment, $this->getParameter('comment_uploads_dir'));
 
             $comment->setMessage($message);
 
-            $comment = $this->get('resource.manager')->save($comment);
+            $resourceManager->save($comment);
 
             $view = $this->view(null, 201);
             return $this->handleView($view);

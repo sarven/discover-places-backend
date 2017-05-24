@@ -50,6 +50,11 @@ class Comment implements ResourceInterface
     private $message;
 
     /**
+     * @var string
+     */
+    private $ip;
+
+    /**
      * Comment constructor.
      */
     public function __construct()
@@ -185,6 +190,25 @@ class Comment implements ResourceInterface
     public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * @param string $ip
+     * @return $this
+     */
+    public function setIp(string $ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
     }
 }
 

@@ -55,6 +55,7 @@ class LoadUserData implements FixtureInterface
             ->setLatitude($data['lat'])
             ->setLongitude($data['long'])
             ->setScope($data['scope'])
+            ->setIp('127.0.0.1')
         ;
     }
 }

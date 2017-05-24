@@ -28,6 +28,8 @@ AppBundle\Entity\Message:
             type: integer
         date:
             type: datetime
+        ip:
+            type: string
     lifecycleCallbacks: {  }
     oneToMany:
         comments:

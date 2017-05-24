@@ -17,12 +17,19 @@ class ResourceManager implements ResourceManagerInterface
     private $em;
 
     /**
+     * @var int
+     */
+    private $timeConstraintInSec;
+
+    /**
      * ResourceManager constructor.
      * @param EntityManagerInterface $em
+     * @param int $timeConstraintInSec
      */
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, int $timeConstraintInSec = 5)
     {
         $this->em = $em;
+        $this->timeConstraintInSec = $timeConstraintInSec;
     }
 
     /**
@@ -47,5 +54,21 @@ class ResourceManager implements ResourceManagerInterface
         $this->em->flush();
 
         return $resource;
+    }
+
+    public function isPossibleToAdd(ResourceInterface $resource, string $ip)
+    {
+        return $this->em->createQueryBuilder()
+            ->select('COUNT(r)')
+            ->from(get_class($resource), 'r')
+            ->where('r.ip = :ip')
+            ->andWhere('timestampdiff(SECOND, r.date, :today) < :timeConstraint')
+            ->setParameters([
+                'ip' => $ip,
+                'today' => new \DateTime(),
+                'timeConstraint' => $this->timeConstraintInSec
+            ])
+            ->getQuery()
+            ->getSingleScalarResult() == 0;
     }
 }

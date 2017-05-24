@@ -4,6 +4,7 @@ namespace Test\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CommentControllerTest
@@ -12,6 +13,22 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class CommentControllerTest extends WebTestCase
 {
     public function testCreateComment()
+    {
+        $response = $this->createComment();
+
+        $this->assertEquals(201, $response->getStatusCode());
+    }
+
+    public function testCreateCommentAfterLessThanSpecifiedBreakTime()
+    {
+        $response = $this->createComment();
+        $this->assertEquals(400, $response->getStatusCode());
+    }
+
+    /**
+     * @return Response
+     */
+    protected function createComment()
     {
         $client = self::createClient();
         $fixturesPath = $client->getContainer()->getParameter('kernel.root_dir').'/../tests/AppBundle/fixtures/';
@@ -25,16 +42,16 @@ class CommentControllerTest extends WebTestCase
         $client->request(
             'POST',
             '/front/api/message/1/comment', [
-                'comment' => [
-                    'content' => 'test'
-                ]
-            ], [
+            'comment' => [
+                'content' => 'test'
+            ]
+        ], [
                 'comment' => [
                     'photo' => $photo
                 ]
-        ]
+            ]
         );
 
-        $this->assertEquals(201, $client->getResponse()->getStatusCode());
+        return $client->getResponse();
     }
 }

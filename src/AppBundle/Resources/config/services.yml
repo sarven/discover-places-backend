@@ -5,6 +5,7 @@ services:
         class: AppBundle\Manager\ResourceManager
         arguments:
             - '@doctrine.orm.entity_manager'
+            - 5
     photo.uploader:
         class: AppBundle\Upload\PhotoUploader
         arguments:

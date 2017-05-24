@@ -22,7 +22,10 @@ AppBundle\Entity\Comment:
             nullable: true
         date:
             type: datetime
+        ip:
+            type: string
     lifecycleCallbacks: {  }
     manyToOne:
         message:
             targetEntity: AppBundle\Entity\Message
+            inversedBy: comments

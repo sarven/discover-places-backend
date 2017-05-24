@@ -79,6 +79,11 @@ class Message implements ResourceInterface
     private $comments;
 
     /**
+     * @var string
+     */
+    private $ip;
+
+    /**
      * Comment constructor.
      */
     public function __construct()
@@ -303,6 +308,25 @@ class Message implements ResourceInterface
         if ($this->comments->contains($comment)) {
             $this->removeComment($comment);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * @param string $ip
+     * @return $this
+     */
+    public function setIp(string $ip)
+    {
+        $this->ip = $ip;
 
         return $this;
     }

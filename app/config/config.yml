@@ -66,6 +66,7 @@ doctrine:
                 cos: DoctrineExtensions\Query\Mysql\Cos
                 sin: DoctrineExtensions\Query\Mysql\Sin
                 radians: DoctrineExtensions\Query\Mysql\Radians
+                timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
 
 # Swiftmailer Configuration
 swiftmailer:
