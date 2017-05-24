@@ -42,11 +42,10 @@ class CommentControllerTest extends WebTestCase
                 'content' => 'test'
             ]
         ], [
-                'comment' => [
-                    'photo' => $photo
-                ]
+            'comment' => [
+                'photo' => $photo
             ]
-        );
+        ]);
 
         return $client->getResponse();
     }

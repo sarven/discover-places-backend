@@ -36,6 +36,7 @@ class MessageControllerTest extends WebTestCase
     public function testCreateMessage()
     {
         $response = $this->createMessage();
+        dump($response);
         $this->assertEquals(201, $response->getStatusCode());
 
         $response = $this->createMessage();
@@ -75,11 +76,10 @@ class MessageControllerTest extends WebTestCase
                 'scope' => 1,
             ]
         ], [
-                'message' => [
-                    'photo' => $photo
-                ]
+            'message' => [
+                'photo' => $photo
             ]
-        );
+        ]);
 
         return $client->getResponse();
     }
