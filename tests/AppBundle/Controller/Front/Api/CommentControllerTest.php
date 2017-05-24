@@ -15,12 +15,8 @@ class CommentControllerTest extends WebTestCase
     public function testCreateComment()
     {
         $response = $this->createComment();
-
         $this->assertEquals(201, $response->getStatusCode());
-    }
 
-    public function testCreateCommentAfterLessThanSpecifiedBreakTime()
-    {
         $response = $this->createComment();
         $this->assertEquals(400, $response->getStatusCode());
     }

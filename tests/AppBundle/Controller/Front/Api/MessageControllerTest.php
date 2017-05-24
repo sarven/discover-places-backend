@@ -37,10 +37,7 @@ class MessageControllerTest extends WebTestCase
     {
         $response = $this->createMessage();
         $this->assertEquals(201, $response->getStatusCode());
-    }
 
-    public function testCreateMessageAfterLessThanSpecifiedBreakTime()
-    {
         $response = $this->createMessage();
         $this->assertEquals(400, $response->getStatusCode());
     }
